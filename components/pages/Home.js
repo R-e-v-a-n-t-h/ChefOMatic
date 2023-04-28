@@ -16,7 +16,7 @@ export default function Home(props) {
     <ScrollView>
       {features.map(x=>{
         return (<FeatureCard destination={x.destination} navigation={props.navigation} key={x.name}>
-        <Text style={globalStyles.titleText}>{x.name}</Text>
+        <Text style={globalStyles.headerText}>{x.name}</Text>
       </FeatureCard>)
       })
       }
