@@ -61,21 +61,43 @@ class CompleteRecognition:
 
         return labels, cords, percent
 
-    def __call__(self, frame):
 
+    def plot_boxes(self,results,frame):
+        labels, cord, confidence = results
+        n = len(labels)
+        for i in range(n):
+            row = cord[i]
+            x1, y1, x2, y2 = row
+            bgr = (0, 255, 0)
+            cv2.rectangle(frame, (x1, y1), (x2, y2), bgr, 2)
+            cv2.putText(frame, labels[i]+"  "+str(confidence[i]*100)+"%", (x1, y1), cv2.FONT_HERSHEY_DUPLEX, 0.9, bgr, 2)
+
+        return frame        
+        
+    
+    
+    def __call__(self, frame):
+        
         obj_labels, obj_coordinates, obj_confidence = self.obj_score_frame(frame)
         ocr_labels, ocr_coordinates, ocr_confidence = self.ocr_score_frame(frame)
-        results = {
-            "obj": {
-                "labels": obj_labels,
-                "coordinates": obj_coordinates,
-                "confidence": obj_confidence
-            },
-            "ocr": {
-                "labels": ocr_labels,
-                "coordinates": ocr_coordinates,
-                "confidence": ocr_confidence
-            }
-        }
-        return results
+        labels=obj_labels+ocr_labels
+        cords=obj_coordinates+ocr_coordinates
+        percent=obj_confidence+ocr_confidence
+        results= [labels,cords,percent]
+        frame = self.plot_boxes(results, frame)
+        return [frame, set(labels)]
+        
+        # results = {
+        #     "obj": {
+        #         "labels": obj_labels,
+        #         "coordinates": obj_coordinates,
+        #         "confidence": obj_confidence
+        #     },
+        #     "ocr": {
+        #         "labels": ocr_labels,
+        #         "coordinates": ocr_coordinates,
+        #         "confidence": ocr_confidence
+        #     }
+        # }
+        # return results
 
