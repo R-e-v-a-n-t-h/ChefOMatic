@@ -1,6 +1,6 @@
 import { createStackNavigator} from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
-import Home from "../components/pages/Home"
+import Home from "../components/pages/home/Home"
 import Dishes from "../components/pages/Dishes"
 import StartPage from "../components/pages/StartPage"
 import ScanForDishes from "../components/pages/ScanForDishes"
@@ -18,7 +18,7 @@ const screens ={
     Home:{
         screen: Home,
         navigationOptions: {
-            headerTitle:() => <Header title= "Home"/> }
+            headerTitle:() => <Header title= "The Kitchen"/> }
     },
     Dishes:{
         screen:Dishes

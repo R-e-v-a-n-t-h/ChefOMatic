@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
+import { COLORS, FONT, SIZES, SHADOWS } from '../constant/theme'
 export const globalStyles = StyleSheet.create({
     headerText:{
         fontFamily: 'Inter',

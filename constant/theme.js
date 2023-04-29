@@ -13,17 +13,19 @@ const COLORS = {
   const FONT = {
     light: "Inter-Light",
     regular: "Inter-Regular",
-    medium: "",
-    semiBold: "",
-    bold: "",
+    medium: "Inter-Medium",
+    semiBold: "Inter-SemiBold",
+    bold: "Inter-Bold",
+    xtraBold: "Inter-ExtraBold"
   };
   
   const SIZES = {
     xSmall: 10,
     small: 12,
+    med: 14,
     medium: 16,
     large: 20,
-    xLarge: 24,
+    xLarge: 22,
     xxLarge: 32,
   };
   

@@ -4,6 +4,7 @@ import env from "./Env"
 import {AppLoading} from "expo"
 import Navigator from "./routes/homeStack"
 import { useFonts } from 'expo-font';
+import { View, ScrollView, SafeAreaView } from "react-native";
 
 
 
@@ -15,7 +16,12 @@ import { useFonts } from 'expo-font';
 
 export default function App() {
   const [loaded] = useFonts({
-    Inter: require('./assets/fonts/Inter.ttf'),
+    "Inter-Light": require('./assets/fonts/Inter-Light.ttf'),
+    "Inter-Regular": require('./assets/fonts/Inter-Regular.ttf'),
+    "Inter-Medium": require('./assets/fonts/Inter-Medium.ttf'),
+    "Inter-SemiBold": require('./assets/fonts/Inter-SemiBold.ttf'),
+    "Inter-Bold": require('./assets/fonts/Inter-Bold.ttf'),
+    "Inter-ExtraBold": require('./assets/fonts/Inter-ExtraBold.ttf')
   });
 
   if (!loaded) {
