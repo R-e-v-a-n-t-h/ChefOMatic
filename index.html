@@ -7,11 +7,6 @@
     <title>Robot Vision</title>
 </head>
 <body>
-    {%if app.state.status%}
-    <h1>Activated<h1>
-    {%else%}
-    <h1>Deactivated<h1>
-    {%endif%}
     <img src="{{url_for('video')}}" alt="Nothing" width = "50%">
 </body>
 </html>
