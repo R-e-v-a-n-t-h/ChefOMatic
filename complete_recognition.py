@@ -38,7 +38,7 @@ class CompleteRecognition:
                     xyxyn[i][2] * x_shape), int(xyxyn[i][3] * y_shape)
                 cord.append([x1, y1, x2, y2])  # BOX DIAGONAL COORDINATES
 
-                percent.append(conf[i]*100)  # CONFIDENCE PERCENT
+                percent.append(conf[i])  # CONFIDENCE PERCENT
 
         return labels, cord, percent
 
@@ -52,11 +52,11 @@ class CompleteRecognition:
             if confidence > self.threshold:
                 points = results[i][0]
                 label = results[i][1]
-                x1, y1 = points[3]
-                x2, y2 = points[1]
+                x1, y1 = points[0]
+                x2, y2 = points[2]
 
                 labels.append(label)
-                cords.append([x1, y1, x2, y2])
+                cords.append([int(x1), int(y1), int(x2), int(y2)])
                 percent.append(confidence)
 
         return labels, cords, percent
@@ -70,7 +70,7 @@ class CompleteRecognition:
             x1, y1, x2, y2 = row
             bgr = (0, 255, 0)
             cv2.rectangle(frame, (x1, y1), (x2, y2), bgr, 2)
-            cv2.putText(frame, labels[i]+"  "+str(confidence[i]*100)+"%", (x1, y1), cv2.FONT_HERSHEY_DUPLEX, 0.9, bgr, 2)
+            cv2.putText(frame, labels[i]+"  "+str(round(confidence[i]*100,2))+"%", (x1, y1), cv2.FONT_HERSHEY_DUPLEX, 0.7, bgr, 2)
 
         return frame        
         
