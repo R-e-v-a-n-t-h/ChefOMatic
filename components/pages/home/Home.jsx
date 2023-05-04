@@ -10,8 +10,8 @@ import {
 } from 'react-native'
 import React from 'react'
 import { globalStyles } from '../../../styles/global'
-import FeatureCard from '../../FeatureCard'
-import DishOfTheDay from "../../DishOfTheDay"
+import FeatureCard from './FeatureCard'
+import DishOfTheDay from "./DishOfTheDay"
 import styles from './home.style'
 import { COLORS } from '../../../constant'
 

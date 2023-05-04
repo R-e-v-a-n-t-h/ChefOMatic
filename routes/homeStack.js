@@ -7,7 +7,8 @@ import ScanForDishes from "../components/pages/ScanForDishes"
 import Recipe from "../components/pages/Recipe"
 import AddOwnDish from "../components/pages/AddOwnDish"
 import OwnDishes from "../components/pages/OwnDishes"
-import RobotVision from "../components/pages/RobotVision"
+import RobotVision from "../components/pages/robotVision/RobotVision"
+import VisionResults from "../components/pages/robotVision/VisionResults";
 import Header from "../components/Header"
 
 
@@ -27,7 +28,14 @@ const screens ={
         screen: ScanForDishes
     },
     RobotVision: {
-        screen: RobotVision
+        screen: RobotVision,
+        navigationOptions: {
+            headerTitle:() => <Header title= "Robot Vision"/> }
+    },
+    VisionResults:{
+        screen:VisionResults,
+        navigationOptions: {
+            headerTitle:() => <Header title= "Vision Results"/> }
     },
     Recipe:{
         screen:Recipe
