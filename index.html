@@ -5,8 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Robot Vision</title>
+    <link rel="stylesheet" type="text/css" href="https://uploads-ssl.webflow.com/63c46b32d3e27e420ba93d60/css/asilnasiri.webflow.e7807b5a2.css" />
 </head>
-<body>
-    <img src="{{url_for('video')}}" alt="Nothing" width = "50%">
+<body class="x-body-flex">
+    <div class="img-wrap">
+        <img src="{{url_for('video')}}" sizes="(max-width: 767px) 100vw, 860px" alt="" class="img" />
+    </div>
 </body>
 </html>
