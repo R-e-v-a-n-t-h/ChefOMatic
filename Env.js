@@ -6,7 +6,7 @@ class Env{
 }
 
 const env = new Env(
-    url="https://7729-2-51-66-185.ngrok-free.app",
+    url="https://d618-2-51-66-185.ngrok-free.app",
     dishesPerPage=200
     )
 
