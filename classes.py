@@ -19,7 +19,7 @@ classes = classes = [
     "garlic",
     "ginger",
     "grapes",
-    "jalapeno-corn",
+    "corn",# "jalapeno-corn",
     "KITCHEN_KNIFE",
     "kiwi",
     "LADLE",
