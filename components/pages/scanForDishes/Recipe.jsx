@@ -43,7 +43,6 @@ export default function Recipe(props) {
     <View style={styles.container}>
       <View style={styles.panel1}>
         <Text style={[styles.title]}>{title}</Text>
-        {console.log(iconHolder)}
         <View style={styles.iconsholder}>
             {types.map((x,index)=>{return (x?<Image key={index} style={styles.icons} source={iconHolder[index]}/>:null)})}
         </View>
@@ -59,7 +58,8 @@ export default function Recipe(props) {
         }}/>
       </View>
      
-     
+     <View style={styles.extrapanel}></View>
+
       <View style={styles.panel3}>
         <Text style={[styles.subtitle]}>Directions</Text>
         <Text style={{borderColor:COLORS.black,borderWidth:1,height:1,marginTop:5}}></Text>
@@ -103,16 +103,14 @@ const styles = StyleSheet.create({
   },
   
   panel2:{
-    height:"30%",
+    height:"25%",
     width:"100%",
   },
-  ingredients:{},
 
   panel3:{
-    height:"55%",
+    height:"50%",
     width:"100%",
   },
-  directions:{},
 
   panel4:{
     height:"5%",
@@ -133,7 +131,9 @@ const styles = StyleSheet.create({
         width:30,
         marginRight:10
     },
-
+extrapanel:{
+  height:"5%"
+}
 
 
 })

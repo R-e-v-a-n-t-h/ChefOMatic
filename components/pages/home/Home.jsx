@@ -20,7 +20,7 @@ export default function Home(props) {
   const features=[
     {name:"Robot Vision Test",destination:"RobotVision" }, 
     {name:"Scan For Dishes", destination:"ScanForDishes"}, 
-    {name:"Find a Dish Using GPT",destination:"ScanForGPT"},
+    {name:"Find a Dish Using ChatGPT",destination:"ScanForGPT"},
     ]
 
   return (
