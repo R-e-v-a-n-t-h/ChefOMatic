@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function ScanForDishes() {
+export default function IngredientsGPT() {
   return (
     <View>
-      <Text>ScanForDishes</Text>
+      <Text>IngredientsGPT</Text>
     </View>
   )
 }

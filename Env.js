@@ -6,8 +6,8 @@ class Env{
 }
 
 const env = new Env(
-    url="https://d618-2-51-66-185.ngrok-free.app",
-    dishesPerPage=200
+    url="http://10.0.2.2:8000",
+    dishesPerPage=25
     )
 
 export default env

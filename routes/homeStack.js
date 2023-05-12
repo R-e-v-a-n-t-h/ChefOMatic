@@ -1,51 +1,83 @@
 import { createStackNavigator} from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import Home from "../components/pages/home/Home"
-import Dishes from "../components/pages/Dishes"
-import StartPage from "../components/pages/StartPage"
-import ScanForDishes from "../components/pages/ScanForDishes"
-import Recipe from "../components/pages/Recipe"
-import AddOwnDish from "../components/pages/AddOwnDish"
-import OwnDishes from "../components/pages/OwnDishes"
+
 import RobotVision from "../components/pages/robotVision/RobotVision"
 import VisionResults from "../components/pages/robotVision/VisionResults";
+
+import ScanForDishes from "../components/pages/scanForDishes/ScanForDishes"
+import IngredientsPanel from "../components/pages/scanForDishes/IngredientsPanel"
+import Dishes from "../components/pages/scanForDishes/Dishes"
+import Recipe from "../components/pages/scanForDishes/Recipe"
+
+import ScanForGPT from "../components/pages/usingGPT/ScanForGPT"
+import IngredientsGPT from "../components/pages/usingGPT/IngredientsGPT"
+import GPTRecipe from "../components/pages/usingGPT/GPTRecipe"
+
 import Header from "../components/Header"
 
 
 const screens ={
-    // StartPage:{
-    //     screen: StartPage
-    // },
+    
     Home:{
         screen: Home,
         navigationOptions: {
-            headerTitle:() => <Header title= "The Kitchen"/> }
+            headerTitle:() => <Header title= "ChefOMatic"/> }
     },
-    Dishes:{
-        screen:Dishes
-    },
-    ScanForDishes:{
-        screen: ScanForDishes
-    },
+    
+    
     RobotVision: {
         screen: RobotVision,
         navigationOptions: {
-            headerTitle:() => <Header title= "Robot Vision"/> }
+            headerTitle:() => <Header title= "Robot Vision Test"/> }
     },
     VisionResults:{
         screen:VisionResults,
         navigationOptions: {
             headerTitle:() => <Header title= "Vision Results"/> }
     },
+    
+    
+    ScanForDishes:{
+        screen: ScanForDishes,
+        navigationOptions: {
+            headerTitle:() => <Header title= "Robot Vision"/> }
+    },
+    IngredientsPanel:{
+        screen:IngredientsPanel,
+        navigationOptions: {
+            headerTitle:() => <Header title= "Ingredients Panel"/> }
+    },
+    Dishes:{
+        screen:Dishes,
+        navigationOptions: {
+            headerTitle:() => <Header title= "Dishes"/> }
+    },
+    
     Recipe:{
-        screen:Recipe
+        screen:Recipe,
+        navigationOptions: {
+            headerTitle:() => <Header title= "Recipe"/> }
     },
-    AddOwnDish:{
-        screen: AddOwnDish
+
+
+    ScanForGPT:{
+        screen: ScanForGPT,
+        navigationOptions: {
+            headerTitle:() => <Header title= "Robot Vision"/> }
     },
-    OwnDishes:{
-        screen: OwnDishes
+    IngredientsGPT:{
+        screen:IngredientsGPT,
+        navigationOptions: {
+            headerTitle:() => <Header title= "Ingredients Panel"/> }
+    },
+    GPTRecipe:{
+        screen: GPTRecipe,
+        navigationOptions: {
+            headerTitle:() => <Header title= "Recipe From ChatGPT"/> }
     }
+
+
 
 }
 

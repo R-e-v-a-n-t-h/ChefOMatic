@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function Dishes() {
+export default function GPTRecipe() {
   return (
     <View>
-      <Text>Dishes</Text>
+      <Text>GPTRecipe</Text>
     </View>
   )
 }

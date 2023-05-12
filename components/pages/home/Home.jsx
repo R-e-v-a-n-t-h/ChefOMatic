@@ -18,28 +18,21 @@ import { COLORS } from '../../../constant'
 export default function Home(props) {
   
   const features=[
-    {name:"Robot Vision",destination:"RobotVision" }, 
+    {name:"Robot Vision Test",destination:"RobotVision" }, 
     {name:"Scan For Dishes", destination:"ScanForDishes"}, 
-    {name:"Find Dishes",destination:"Dishes"}, 
-    {name:"Own Dishes",destination:"OwnDishes"}
+    {name:"Find a Dish Using GPT",destination:"ScanForGPT"},
     ]
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightWhite}}>
-            <ScrollView>
-              {features.map(x=>{
+    
+            <View style={{flex: 1, backgroundColor: COLORS.lightWhite}}>{features.map(x=>{
                 return (<FeatureCard destination={x.destination} navigation={props.navigation} key={x.name}>
                 <Text style={styles.title}>{x.name}</Text>
               </FeatureCard>)
               })
               }
-
-              <DishOfTheDay>
-                <Text style={styles.headerText}>Dish Of The Day goes here</Text>
-              </DishOfTheDay>
     
-            </ScrollView>
-      </SafeAreaView>
+            </View>
   )
 }
 

@@ -6,6 +6,7 @@ import vegetarian from '../assets/icons/vegetarian.png';
 import nonVeg from '../assets/icons/non-veg.png';
 import newIcon from '../assets/icons/new.png';
 import noImg from '../assets/icons/image icon.png';
+import glutenfree from '../assets/icons/glutenfree.png'
 
 export default {
     setting,
@@ -16,4 +17,5 @@ export default {
     nonVeg,
     newIcon,
     noImg,
+    glutenfree
 };
