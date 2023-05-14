@@ -9,7 +9,8 @@ import { ScrollView,
   Platform,
   Keyboard,
   SafeAreaView,
-  FlatList
+  FlatList,
+  ActivityIndicator
     } from 'react-native'
 
 import { COLORS,SIZES,FONT } from '../../../constant'
@@ -70,7 +71,7 @@ const pageChange = async (change)=>{
       />
     }}
     />
-    :<Text style={[styles.panel1]}>loading...</Text>
+    :<View style={[styles.container]}><ActivityIndicator style={styles.panel1} color={COLORS.primary}></ActivityIndicator></View>
 }
     <View style={[styles.panel2]}>
       <TouchableOpacity style={[styles.pagebutton]} onPress={()=>pageChange(-1)}>
