@@ -60,7 +60,8 @@ def getDishDetails(df,allIngredients,dishName):
 # Load models, data and templates
 detector = CompleteRecognition(0.7)    #Set Threshold
 
-data = pd.read_csv('Cleaned_Data.csv')
+# data = pd.read_csv('Cleaned_Data.csv')
+data = pd.read_csv('Data1.csv').join(pd.read_csv("Data2.csv"))
 # recipeModel = pickle.load(open("NearestNeighborModel.pkl", 'rb'))
 camera =  cv2.VideoCapture(0)
 hometemplate = Jinja2Templates(directory="")
