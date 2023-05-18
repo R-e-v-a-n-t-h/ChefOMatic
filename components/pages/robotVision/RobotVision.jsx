@@ -9,7 +9,7 @@ import {COLORS, FONT, SIZES} from "../../../constant"
 export default function RobotVision(props) {
 
   
-  const apiEndpoint = `${env.url}`
+  const apiEndpoint = `${env.robourl}`
   const [status,setStatus] = useState(false)
   // const [predictions,setPredictions] = useState({})
 
