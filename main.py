@@ -23,11 +23,20 @@ import mediapipe as mp
 
 
 app = FastAPI()
+roboapp=FastAPI()
 
 
 origins = ["*"]
 
 app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
+roboapp.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
@@ -58,7 +67,7 @@ def getDishDetails(df,allIngredients,dishName):
 
 
 # Load models, data and templates
-detector = CompleteRecognition(0.7)    #Set Threshold
+# detector = CompleteRecognition(0.7)    #Set Threshold
 
 # data = pd.read_csv('Cleaned_Data.csv')
 data = pd.read_csv('Data1.csv').join(pd.read_csv("Data2.csv"))
@@ -72,6 +81,7 @@ async def startup_event():
     # Store models in the application's state
     #Statistical ML States
     # app.state.recipeModel = recipeModel
+    # app.state.data = data
     app.state.data = data
     start=10
     app.state.allIngredients= list(data.columns)[start:]
@@ -81,11 +91,7 @@ async def startup_event():
     
     app.state.indecies, app.state.dishes = loadDishesAndIndecies(app.state.allIngredients, app.state.data)
     app.state.predictedDishes = []
-    
-    #Robot CV States
-    app.state.detector = detector
-    app.state.predictions=set()
-    app.state.status=False
+
     
     app.state.mydb = mysql.connector.connect(
     host="cloud.mindsdb.com",
@@ -94,7 +100,17 @@ async def startup_event():
     port="3306"
     )
     
-    app.state.hands = mp.solutions.hands.Hands()
+
+@roboapp.on_event("startup")
+async def robostartup_event():
+    
+    
+    #Robot CV States
+    # roboapp.state.detector = detector
+    roboapp.state.detector = CompleteRecognition(0.7)
+    roboapp.state.predictions=set()
+    roboapp.state.status=False
+    roboapp.state.hands = mp.solutions.hands.Hands()
 
 
 # -----------------------------------------------------------------------------------------> Using Lazeez
@@ -192,12 +208,12 @@ async def getPredictions(request: Request):
 
 #-------------------------------------------------------------------------------------------------------------> Robot
 def generateFrames():
-    detector=app.state.detector
-    hands = app.state.hands
+    detector=roboapp.state.detector
+    hands = roboapp.state.hands
     while True:
         x=400
         y=50
-        status = app.state.status
+        status = roboapp.state.status
         # read the camera frame
         success,frame=camera.read()
         if not success:
@@ -210,8 +226,8 @@ def generateFrames():
                 results = hands.process(gray_image).multi_hand_landmarks
                 frame = detection[0]
                 
-                predictions=app.state.predictions
-                app.state.predictions=predictions.union(detection[1])
+                predictions=roboapp.state.predictions
+                roboapp.state.predictions=predictions.union(detection[1])
                 
                 cv2.putText(frame,"Activated",(x,y) ,cv2.FONT_HERSHEY_DUPLEX, 0.9, (0,255,0), 2)
                 
@@ -236,45 +252,45 @@ def generateFrames():
         
 
 def deactivate():
-    predictions=app.state.predictions
-    app.state.status=False
-    app.state.predictions=set()
+    predictions=roboapp.state.predictions
+    roboapp.state.status=False
+    roboapp.state.predictions=set()
     return predictions
 
 def activate():
-    app.state.status=True
+    roboapp.state.status=True
 
 
 
-@app.api_route('/robot')
+@roboapp.api_route('/robot')
 async def index(request: Request):
     return hometemplate.TemplateResponse("index.html",{"request":request})
 
-@app.api_route('/robot/video')
+@roboapp.api_route('/robot/video')
 async def video(request: Request):
     return StreamingResponse(generateFrames(), headers={"Content-Type": "multipart/x-mixed-replace; boundary=frame"})
 
 
 
 
-@app.get('/robot/current-state')
+@roboapp.get('/robot/current-state')
 async def isActive():
-    return {"status":app.state.status}
+    return {"status":roboapp.state.status}
 
 
 
     
 
-@app.get('/robot/change-bot-state')
+@roboapp.get('/robot/change-bot-state')
 async def changeState():
     
-    if app.state.status:
+    if roboapp.state.status:
         predictions= deactivate()
-        return {"status":app.state.status,"predictions":predictions}
+        return {"status":roboapp.state.status,"predictions":predictions}
            
     else:
         activate()
-        return {"status":app.state.status,"predictions":set()}
+        return {"status":roboapp.state.status,"predictions":set()}
     
 #-------------------------------------------------------------------------------------------------------------> Robot
 
