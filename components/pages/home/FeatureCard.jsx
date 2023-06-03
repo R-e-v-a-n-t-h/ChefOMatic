@@ -4,7 +4,7 @@ import styles from './featureCard.style'
 
 export default function FeatureCard(props) {
   return (
-    <TouchableOpacity style={styles.container} onPress={()=>props.navigation.push(props.destination)} >
+    <TouchableOpacity style={styles.container} onPress={()=>props.navigation.navigate(props.destination)} >
       <View style={styles.title}>
         {props.children}
       </View>

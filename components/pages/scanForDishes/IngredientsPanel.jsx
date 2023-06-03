@@ -104,7 +104,7 @@ export default function IngredientsPanel(props) {
 
   const generateButtonClick = async ()=>{
     var total = await sendData()
-    props.navigation.push("Dishes",{totalDishes:total})
+    props.navigation.navigate("Dishes",{totalDishes:total})
   }
 
   const generateDropDown =  (input)=>{

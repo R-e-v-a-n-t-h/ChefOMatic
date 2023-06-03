@@ -11,6 +11,7 @@ export default function RobotVision(props) {
   
   const apiEndpoint = `${env.robourl}`
   const [status,setStatus] = useState(false)
+  const [changed,setChanged]=useState(false)
   // const [predictions,setPredictions] = useState({})
 
 const getStatusOfBot = async() => {
@@ -34,6 +35,7 @@ const handleActivationButtonClicked= async () => {
       setStatus(state)
     })
   }else{
+      setChanged(true)
     await axios.get(apiEndpoint+"/robot/change-bot-state").then(response=>{
       state=response.data.status
       pred=response.data.predictions
@@ -51,7 +53,7 @@ const handleActivationButtonClicked= async () => {
     <View style={styles.container}>
        <TouchableOpacity
          style={[styles.activationButton, !status?styles.activate:styles.deactivate]} 
-         onPress={handleActivationButtonClicked}
+         onPress={!changed?handleActivationButtonClicked:null}
        >
          <Text style={styles.activationButtonText}> {!status?"Activate Bot":"Deactivate Bot"}</Text>
  </TouchableOpacity>

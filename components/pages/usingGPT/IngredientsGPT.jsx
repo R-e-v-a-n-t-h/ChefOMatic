@@ -104,7 +104,7 @@ export default function IngredientsGPT(props) {
 
   const generateButtonClick = async ()=>{
     // var total = await sendData()
-    props.navigation.push("GPTRecipe",{chosenIngredients:predictions})
+    props.navigation.navigate("GPTRecipe",{chosenIngredients:predictions})
   }
 
   const generateDropDown =  (input)=>{

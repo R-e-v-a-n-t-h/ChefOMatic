@@ -37,7 +37,7 @@ export default function DishCard({dishName, navigation}) {
     }
 
     const handleCardClick=  () => {
-      navigation.push("Recipe",{title:dishName,types:types, iconHolder:iconHolder, types:types})
+      navigation.navigate("Recipe",{title:dishName,types:types, iconHolder:iconHolder, types:types})
     }
 
   return (
