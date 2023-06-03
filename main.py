@@ -171,11 +171,11 @@ async def makePredictions(request: Request):                                    
             else:
                 predictedData = data.iloc[predictions[1][0]]
                 predictedData = predictedData.loc[
-                                (predictedData["is_veg"]==filters[0]) &
-                                (predictedData["is_halal"]==filters[1]) &
-                                (predictedData["is_kosher"]==filters[2]) &
-                                (predictedData["is_gluten_free"]==filters[3]) &
-                                (predictedData["is_vegetarian"]==filters[4]) 
+                                ((predictedData["is_veg"]==filters[0])|(predictedData["is_veg"]==1)) &
+                                (predictedData["is_halal"]==filters[1]|(predictedData["is_halal"]==1)) &
+                                (predictedData["is_kosher"]==filters[2]|(predictedData["is_kosher"]==1)) &
+                                (predictedData["is_gluten_free"]==filters[3]|(predictedData["is_gluten_free"]==1)) &
+                                (predictedData["is_vegetarian"]==filters[4]|(predictedData["is_vegetarian"]==1)) 
                                 ]
             predictedData = classifier(predictedData, picked)
             predictedData = np.array(predictedData["title"]).tolist()
