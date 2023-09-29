@@ -1,6 +1,6 @@
 # ChefOMatic
 # Project Name: Computer Vision based Recipe Generator
-
+[![GitHub Views](https://komarev.com/ghpvc/?username=R-e-v-a-n-t-h&label=Views&color=brightgreen&style=flat)](https://github.com/R-e-v-a-n-t-h/ChefOMatic)
 ## Table of Contents
 - [Introduction](#introduction)
 - [Key Features](#key-features)
